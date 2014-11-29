@@ -17,7 +17,7 @@ The recommended way to install WebAutomator is through [Composer](http://getcomp
 
     curl -sS https://getcomposer.org/installer | php
 
-Next, update your project's composer.json file to include IOUtility:
+Next, update your project's composer.json file to include WebAutomator:
 
     {
         "repositories": [
