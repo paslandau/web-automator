@@ -42,7 +42,7 @@ class ResponseDataExtractor extends AbstractBaseExtractor implements DataExtract
      * @param ResponseDataInterface $responseData
      * @return mixed
      */
-    protected function extract(ResponseDataInterface $responseData)
+    protected function extract(/* ResponseDataInterface */ $responseData)
     {
 //        $extracted = $this->method->invoke($responseData); << won't work on Mocks
         $extracted = $responseData->{$this->method}();

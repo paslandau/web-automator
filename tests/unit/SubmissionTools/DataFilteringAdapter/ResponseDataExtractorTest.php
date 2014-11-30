@@ -47,7 +47,7 @@ class ResponseDataExtractorTest extends PHPUnit_Framework_TestCase
             );
             $this->setExpectedException(get_class(new InvalidArgumentException()));
             foreach ($tests as $method) {
-                $r = new ResponseDataExtractor($method, $t);
+                new ResponseDataExtractor($method, $t);
             }
         }
     }
