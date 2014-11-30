@@ -1,4 +1,5 @@
 #web-automator
+[![Build Status](https://travis-ci.org/paslandau/web-automator.svg?branch=master)](https://travis-ci.org/paslandau/web-automator)
 
 Automation framework for web requests
 
