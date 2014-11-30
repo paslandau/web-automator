@@ -14,65 +14,24 @@
 	        "paslandau\\WebAutomator\\": "src/"
 	    }
 	},
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/paslandau/guzzle-auto-charset-encoding-subscriber.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/paslandau/boolean-expressions.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/paslandau/io-utility.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/paslandau/array-utility.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/paslandau/dom-utility.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/paslandau/comparison-utility.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/paslandau/web-utility.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/paslandau/json-utility.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/paslandau/exception-utility.git"
-        }
-        ,
-        {
-            "type": "git",
-            "url": "https://github.com/paslandau/data-filtering.git"
-        }
-    ],
+    "repositories": [ { "type": "composer", "url": "http://packages.myseosolution.de/"} ],
+    "minimum-stability": "dev",
     "require" : {
         "guzzlehttp/guzzle": "~5.0.3",
         "guzzlehttp/retry-subscriber": "~2",
         "psr/log": "~1",
         "monolog/monolog": "~1",
         "symfony/event-dispatcher": "~2",
-        "paslandau/guzzle-auto-charset-encoding-subscriber": "~0",
-        "paslandau/data-filtering": "~0",
-        "paslandau/boolean-expressions": "~0",
-        "paslandau/io-utility": "~0",
-        "paslandau/array-utility": "~0",
-        "paslandau/dom-utility": "~0",
-        "paslandau/comparison-utility": "~0",
-        "paslandau/web-utility": "~0",
-        "paslandau/json-utility": "~0",
-        "paslandau/exception-utility": "~0"
+        "paslandau/guzzle-auto-charset-encoding-subscriber": "dev-master",
+        "paslandau/data-filtering": "dev-master",
+        "paslandau/boolean-expressions": "dev-master",
+        "paslandau/io-utility": "dev-master",
+        "paslandau/array-utility": "dev-master",
+        "paslandau/dom-utility": "dev-master",
+        "paslandau/comparison-utility": "dev-master",
+        "paslandau/web-utility": "dev-master",
+        "paslandau/json-utility": "dev-master",
+        "paslandau/exception-utility": "dev-master"
     },
         "require-dev" : {
             "phpunit/phpunit": "~3"

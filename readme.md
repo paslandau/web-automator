@@ -20,14 +20,10 @@ The recommended way to install web-automator is through [Composer](http://getcom
 Next, update your project's composer.json file to include WebAutomator:
 
     {
-        "repositories": [
-            {
-                "type": "git",
-                "url": "https://github.com/paslandau/web-automator.git"
-            }
-        ],
+        "repositories": [ { "type": "composer", "url": "http://packages.myseosolution.de/"} ],
+        "minimum-stability": "dev",
         "require": {
-             "paslandau/web-automator": "~0"
+             "paslandau/web-automator": "dev-master"
         }
     }
 
