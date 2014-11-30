@@ -1,5 +1,5 @@
 {
-    "name": "paslandau/WebAutomator",
+    "name": "paslandau/web-automator",
     "description" : "Automation framework for web requests",
     "authors": [
         {
@@ -17,44 +17,44 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/paslandau/GuzzleAutoCharsetEncodingSubscriber.git"
+            "url": "https://github.com/paslandau/guzzle-auto-charset-encoding-subscriber.git"
         },
         {
             "type": "git",
-            "url": "https://github.com/paslandau/BooleanExpressions.git"
+            "url": "https://github.com/paslandau/boolean-expressions.git"
         },
         {
             "type": "git",
-            "url": "https://github.com/paslandau/IOUtility.git"
+            "url": "https://github.com/paslandau/io-utility.git"
         },
         {
             "type": "git",
-            "url": "https://github.com/paslandau/ArrayUtility.git"
+            "url": "https://github.com/paslandau/array-utility.git"
         },
         {
             "type": "git",
-            "url": "https://github.com/paslandau/DomUtility.git"
+            "url": "https://github.com/paslandau/dom-utility.git"
         },
         {
             "type": "git",
-            "url": "https://github.com/paslandau/ComparisonUtility.git"
+            "url": "https://github.com/paslandau/comparison-utility.git"
         },
         {
             "type": "git",
-            "url": "https://github.com/paslandau/WebUtility.git"
+            "url": "https://github.com/paslandau/web-utility.git"
         },
         {
             "type": "git",
-            "url": "https://github.com/paslandau/JsonUtility.git"
+            "url": "https://github.com/paslandau/json-utility.git"
         },
         {
             "type": "git",
-            "url": "https://github.com/paslandau/ExceptionUtility.git"
+            "url": "https://github.com/paslandau/exception-utility.git"
         }
         ,
         {
             "type": "git",
-            "url": "https://github.com/paslandau/DataFiltering.git"
+            "url": "https://github.com/paslandau/data-filtering.git"
         }
     ],
     "require" : {
@@ -63,16 +63,16 @@
         "psr/log": "~1",
         "monolog/monolog": "~1",
         "symfony/event-dispatcher": "~2",
-        "paslandau/GuzzleAutoCharsetEncodingSubscriber": "~0",
-        "paslandau/DataFiltering": "~0",
-        "paslandau/BooleanExpressions": "~0",
-        "paslandau/IOUtility": "~0",
-        "paslandau/ArrayUtility": "~0",
-        "paslandau/DomUtility": "~0",
-        "paslandau/ComparisonUtility": "~0",
-        "paslandau/WebUtility": "~0",
-        "paslandau/JsonUtility": "~0",
-        "paslandau/ExceptionUtility": "~0"
+        "paslandau/guzzle-auto-charset-encoding-subscriber": "~0",
+        "paslandau/data-filtering": "~0",
+        "paslandau/boolean-expressions": "~0",
+        "paslandau/io-utility": "~0",
+        "paslandau/array-utility": "~0",
+        "paslandau/dom-utility": "~0",
+        "paslandau/comparison-utility": "~0",
+        "paslandau/web-utility": "~0",
+        "paslandau/json-utility": "~0",
+        "paslandau/exception-utility": "~0"
     },
         "require-dev" : {
             "phpunit/phpunit": "~3"

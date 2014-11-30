@@ -1,4 +1,4 @@
-#WebAutomator
+#web-automator
 
 Automation framework for web requests
 
@@ -13,7 +13,7 @@ Coming soon...
 
 ##Installation
 
-The recommended way to install WebAutomator is through [Composer](http://getcomposer.org/).
+The recommended way to install web-automator is through [Composer](http://getcomposer.org/).
 
     curl -sS https://getcomposer.org/installer | php
 
@@ -23,11 +23,11 @@ Next, update your project's composer.json file to include WebAutomator:
         "repositories": [
             {
                 "type": "git",
-                "url": "https://github.com/paslandau/WebAutomator.git"
+                "url": "https://github.com/paslandau/web-automator.git"
             }
         ],
         "require": {
-             "paslandau/WebAutomator": "~0"
+             "paslandau/web-automator": "~0"
         }
     }
 
