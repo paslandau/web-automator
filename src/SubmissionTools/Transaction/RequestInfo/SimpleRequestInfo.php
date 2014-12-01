@@ -27,32 +27,32 @@ class SimpleRequestInfo implements RequestInfoInterface
     protected $payload;
 
     /**
-     * @var mixed[]
+     * @var mixed[]|null
      */
     protected $headers;
 
     /**
-     * @var mixed[]
+     * @var mixed[]|null
      */
     protected $options;
 
     /**
-     * @var DomConverterInterface
+     * @var DomConverterInterface|null
      */
     protected $domConverter;
 
     /**
-     * @var EncodingConverterInterface
+     * @var EncodingConverterInterface|null
      */
     protected $encodingConverter;
 
     /**
-     * @var ResponseValidatorConfigInterface
+     * @var ResponseValidatorConfigInterface|null
      */
     protected $responseValidators;
 
     /**
-     * @var SessionInterface
+     * @var SessionInterface|null
      */
     protected $session;
 
@@ -81,7 +81,7 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getHeaders()
     {
@@ -89,7 +89,7 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param mixed[] $headers
+     * @param mixed[]|null $headers
      */
     public function setHeaders(array $headers = null)
     {
@@ -113,7 +113,7 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @return \mixed[]
+     * @return \mixed[]|null
      */
     public function getOptions()
     {
@@ -121,7 +121,7 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param mixed[] $options
+     * @param mixed[]|null $options
      */
     public function setOptions(array $options = null)
     {
@@ -129,7 +129,7 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @return mixed
+     * @return mixed|null
      */
     public function getPayload()
     {
@@ -137,7 +137,7 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param mixed $payload
+     * @param mixed|null $payload
      */
     public function setPayload($payload = null)
     {
@@ -161,7 +161,7 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @return ResponseValidatorConfigInterface
+     * @return ResponseValidatorConfigInterface|null
      */
     public function getResponseValidators()
     {
@@ -169,10 +169,10 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param ResponseValidatorConfigInterface $validators
+     * @param ResponseValidatorConfigInterface|null $validators
      * @return void
      */
-    public function setResponseValidators(ResponseValidatorConfigInterface $validators)
+    public function setResponseValidators(ResponseValidatorConfigInterface $validators = null)
     {
         $this->responseValidators = $validators;
     }
@@ -186,15 +186,15 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param DomConverterInterface $domConverter
+     * @param DomConverterInterface $domConverter|null
      */
-    public function setDomConverter($domConverter)
+    public function setDomConverter($domConverter = null)
     {
         $this->domConverter = $domConverter;
     }
 
     /**
-     * @return EncodingConverterInterface
+     * @return EncodingConverterInterface|null
      */
     public function getEncodingConverter()
     {
@@ -202,9 +202,9 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param EncodingConverterInterface $encodingConverter
+     * @param EncodingConverterInterface $encodingConverter|null
      */
-    public function setEncodingConverter(EncodingConverterInterface $encodingConverter)
+    public function setEncodingConverter(EncodingConverterInterface $encodingConverter = null)
     {
         $this->encodingConverter = $encodingConverter;
     }
@@ -218,9 +218,9 @@ class SimpleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param SessionInterface $session
+     * @param SessionInterface|null $session
      */
-    public function setSession($session)
+    public function setSession($session = null)
     {
         $this->session = $session;
     }

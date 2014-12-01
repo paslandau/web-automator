@@ -47,22 +47,22 @@ class GuzzleRequestInfo implements RequestInfoInterface
     private $options;
 
     /**
-     * @var DomConverterInterface
+     * @var null|DomConverterInterface
      */
     private $domConverter;
 
     /**
-     * @return EncodingConverterInterface
+     * @return null|EncodingConverterInterface
      */
     private $encodingConverter;
 
     /**
-     * @var ResponseValidatorConfigInterface
+     * @var null|ResponseValidatorConfigInterface
      */
     private $responseValidators;
 
     /**
-     * @var GuzzleSession
+     * @var null|GuzzleSession
      */
     private $session;
 
@@ -72,10 +72,10 @@ class GuzzleRequestInfo implements RequestInfoInterface
      * @param mixed[] $payload [optional]. Default: null.
      * @param mixed[] $headers [optional]. Default: null.
      * @param mixed[] $options [optional]. Default: null.
-     * @param ResponseValidatorConfigInterface $responseValidators [optional]. Default: null.
-     * @param DomConverterInterface $domConverter [optional]. Default: null.
-     * @param EncodingConverterInterface $encodingConverter
-     * @param GuzzleSession $session [optional]. Default: null.
+     * @param null|ResponseValidatorConfigInterface $responseValidators [optional]. Default: null.
+     * @param null|DomConverterInterface $domConverter [optional]. Default: null.
+     * @param null|EncodingConverterInterface $encodingConverter [optional]. Default: null.
+     * @param null|GuzzleSession $session [optional]. Default: null.
      */
     function __construct($method, $url, $payload = null, $headers = null, $options = null, ResponseValidatorConfigInterface $responseValidators = null, DomConverterInterface $domConverter = null, EncodingConverterInterface $encodingConverter = null, GuzzleSession $session = null)
     {
@@ -170,7 +170,7 @@ class GuzzleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param mixed $payload
+     * @param mixed|null $payload
      */
     public function setPayload($payload = null)
     {
@@ -194,7 +194,7 @@ class GuzzleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getHeaders()
     {
@@ -202,7 +202,7 @@ class GuzzleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param mixed[] $headers
+     * @param mixed[]|null $headers
      */
     public function setHeaders(array $headers = null)
     {
@@ -234,9 +234,9 @@ class GuzzleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param DomConverterInterface $domConverter
+     * @param null|DomConverterInterface $domConverter
      */
-    public function setDomConverter($domConverter)
+    public function setDomConverter($domConverter = null)
     {
         $this->domConverter = $domConverter;
     }
@@ -250,15 +250,15 @@ class GuzzleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param EncodingConverterInterface $encodingConverter
+     * @param null|EncodingConverterInterface $encodingConverter
      */
-    public function setEncodingConverter(EncodingConverterInterface $encodingConverter)
+    public function setEncodingConverter(EncodingConverterInterface $encodingConverter = null)
     {
         $this->encodingConverter = $encodingConverter;
     }
 
     /**
-     * @return ResponseValidatorConfigInterface
+     * @return null|ResponseValidatorConfigInterface
      */
     public function getResponseValidators()
     {
@@ -266,10 +266,10 @@ class GuzzleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param ResponseValidatorConfigInterface $validators
+     * @param null|ResponseValidatorConfigInterface $validators
      * @return void
      */
-    public function setResponseValidators(ResponseValidatorConfigInterface $validators)
+    public function setResponseValidators(ResponseValidatorConfigInterface $validators = null)
     {
         $this->responseValidators = $validators;
     }
@@ -283,9 +283,9 @@ class GuzzleRequestInfo implements RequestInfoInterface
     }
 
     /**
-     * @param GuzzleSession $session
+     * @param null|GuzzleSession $session
      */
-    public function setSession($session)
+    public function setSession($session = null)
     {
         $this->session = $session;
     }

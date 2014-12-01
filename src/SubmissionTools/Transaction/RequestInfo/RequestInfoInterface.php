@@ -48,7 +48,7 @@ interface RequestInfoInterface
     public function getOptions();
 
     /**
-     * @return ResponseValidatorConfigInterface
+     * @return ResponseValidatorConfigInterface|null
      */
     public function getResponseValidators();
 
@@ -58,12 +58,12 @@ interface RequestInfoInterface
     public function getSession();
 
     /**
-     * @return DomConverterInterface
+     * @return DomConverterInterface|null
      */
     public function getDomConverter();
 
     /**
-     * @return EncodingConverterInterface
+     * @return EncodingConverterInterface|null
      */
     public function getEncodingConverter();
 
@@ -79,34 +79,34 @@ interface RequestInfoInterface
     public function setUrl($url);
 
     /**
-     * @param mixed $payload
+     * @param mixed|null $payload
      */
     public function setPayload($payload = null);
 
     /**
-     * @param mixed[] $headers
+     * @param mixed[]|null $headers
      */
     public function setHeaders(array $headers = null);
 
     /**
      * Request options for next GuzzleRequest
-     * @param mixed[] $options
+     * @param mixed[]|null $options
      */
     public function setOptions(array $options = null);
 
     /**
-     * @param ResponseValidatorConfigInterface $validators
+     * @param ResponseValidatorConfigInterface|null $validators
      * @return void
      */
-    public function setResponseValidators(ResponseValidatorConfigInterface $validators);
+    public function setResponseValidators(ResponseValidatorConfigInterface $validators = null);
 
     /**
-     * @param DomConverterInterface $domConverter
+     * @param DomConverterInterface|null $domConverter
      */
-    public function setDomConverter($domConverter);
+    public function setDomConverter($domConverter = null);
 
     /**
-     * @param EncodingConverterInterface $encodingConverter
+     * @param EncodingConverterInterface|null $encodingConverter
      */
-    public function setEncodingConverter(EncodingConverterInterface $encodingConverter);
+    public function setEncodingConverter(EncodingConverterInterface $encodingConverter = null);
 }

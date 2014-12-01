@@ -25,7 +25,7 @@ class Build
         return ExtractorBuilder::init();
     }
 
-    public static function extractorData($data)
+    public static function extractorData($data = null)
     {
         return DataExtractorBuilder::init($data);
     }

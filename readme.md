@@ -18,7 +18,7 @@ The recommended way to install web-automator is through [Composer](http://getcom
 
     curl -sS https://getcomposer.org/installer | php
 
-Next, update your project's composer.json file to include WebAutomator:
+Next, update your project's composer.json file to include web-automator:
 
     {
         "repositories": [ { "type": "composer", "url": "http://packages.myseosolution.de/"} ],
