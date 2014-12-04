@@ -14,10 +14,10 @@ class IncompleteJsonResponseValidator implements ResponseValidatorInterface{
      */
     public function isValid(ResponseDataInterface $response)
     {
-        if($response->GetException() !== null){
+        if($response->getException() !== null){
             return true; // some other error occured
         }
-        $body = $response->GetBody();
+        $body = $response->getBody();
         $patternRoot = "#^\\s*(\\{|\\[)#uis";
         if(preg_match($patternRoot,$body)){
             if(!json_decode($body)){

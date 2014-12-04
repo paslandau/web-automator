@@ -64,12 +64,12 @@ class SimpleResponseData implements ResponseDataInterface
     {
         $class = get_called_class();
 
-        $body = $data->GetBody();
-        $statusCode = $data->GetStatusCode();
-        $reasonPhrase = $data->GetReasonPhrase();
-        $protocolVersion = $data->GetProtocolVersion();
-        $headers = $data->GetHeaders();
-        $url = $data->GetUrl();
+        $body = $data->getBody();
+        $statusCode = $data->getStatusCode();
+        $reasonPhrase = $data->getReasonPhrase();
+        $protocolVersion = $data->getProtocolVersion();
+        $headers = $data->getHeaders();
+        $url = $data->getUrl();
         $exception = $data->getException();
         return new $class($body, $headers, $protocolVersion, $reasonPhrase, $statusCode, $url, $exception);
     }
@@ -98,7 +98,7 @@ class SimpleResponseData implements ResponseDataInterface
      * Transforms the body of the response in a DomDocument.
      * @return \DOMDocument
      */
-    public function GetDomDocument()
+    public function getDomDocument()
     {
         if ($this->domConverter !== null) {
             return $this->domConverter->Convert($this->getBody());

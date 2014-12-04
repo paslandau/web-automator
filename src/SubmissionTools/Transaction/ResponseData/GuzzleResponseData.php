@@ -17,21 +17,26 @@ class GuzzleResponseData implements ResponseDataInterface
     private $guzzleResponse;
 
     /**
-     * @var \Exception
+     * @var \Exception|null
      */
     private $requestException;
 
     /**
-     * @var \DomDocument
+     * @var \DomDocument|null
      */
     private $domDocCache;
 
     /**
-     * @var DomConverterInterface
+     * @var DomConverterInterface|null
      */
     private $domConverter;
 
-    public function __construct(ResponseInterface $guzzleResponse = null, \Exception $requestException = null, DomConverterInterface $domConverter = null)
+    /**
+     * @param ResponseInterface $guzzleResponse
+     * @param \Exception|null $requestException [optional]. Default: null.
+     * @param DomConverterInterface|null $domConverter [optional]. Default: null.
+     */
+    public function __construct(ResponseInterface $guzzleResponse, \Exception $requestException = null, DomConverterInterface $domConverter = null)
     {
         $this->setGuzzleResponse($guzzleResponse);
         $this->requestException = $requestException;
@@ -59,13 +64,13 @@ class GuzzleResponseData implements ResponseDataInterface
      * Caution: The request that created the response must provide a suitable DomConverterInterface!
      * @return \DOMDocument
      */
-    public function GetDomDocument()
+    public function getDomDocument()
     {
         if ($this->domConverter === null) {
             throw new \RuntimeException("No DomConverter provided in the request");
         }
         if ($this->domDocCache === null) {
-            $this->domDocCache = $this->domConverter->Convert($this->GetBody());
+            $this->domDocCache = $this->domConverter->convert($this->getBody());
         }
         /** @var \DOMDocument $d */
         $d = $this->domDocCache->cloneNode(true);
@@ -75,7 +80,7 @@ class GuzzleResponseData implements ResponseDataInterface
     /**
      * @return string
      */
-    public function GetBody()
+    public function getBody()
     {
         $stream = $this->guzzleResponse->getBody();
         if ($stream === null) {
@@ -87,7 +92,7 @@ class GuzzleResponseData implements ResponseDataInterface
     /**
      * @return string
      */
-    public function GetStatusCode()
+    public function getStatusCode()
     {
         return $this->guzzleResponse->getStatusCode();
     }
@@ -95,7 +100,7 @@ class GuzzleResponseData implements ResponseDataInterface
     /**
      * @return mixed[]
      */
-    public function GetHeaders()
+    public function getHeaders()
     {
         $headers = [];
         $guzzleHeaders = $this->guzzleResponse->getHeaders();
@@ -110,7 +115,7 @@ class GuzzleResponseData implements ResponseDataInterface
      * Last URL during the request
      * @return string
      */
-    public function GetUrl()
+    public function getUrl()
     {
         return $this->guzzleResponse->getEffectiveUrl();
     }
@@ -118,7 +123,7 @@ class GuzzleResponseData implements ResponseDataInterface
     /**
      * @return string
      */
-    public function GetReasonPhrase()
+    public function getReasonPhrase()
     {
         return $this->guzzleResponse->getReasonPhrase();
     }
@@ -126,7 +131,7 @@ class GuzzleResponseData implements ResponseDataInterface
     /**
      * @return string
      */
-    public function GetProtocolVersion()
+    public function getProtocolVersion()
     {
         return $this->guzzleResponse->getProtocolVersion();
     }
@@ -153,8 +158,7 @@ class GuzzleResponseData implements ResponseDataInterface
             // CURLE_OPERATION_TIMEDOUT (28) [most common]
             // CURLE_SEND_ERROR (55)
             // CURLE_RECV_ERROR (56)
-            // CURLE_AGAIN (81)
-            if($this->requestException->getCode() === 0 && preg_match("#cURL error (6|7|28|18|55|56|81)|\\[curl\\] \\(\\#(6|7|28|18|55|56|81)\\)#i", $this->requestException->getMessage())) {
+            if($this->requestException->getCode() === 0 && preg_match("#cURL error (6|7|28|18|55|56)|\\[curl\\] \\(\\#(6|7|28|18|55|56)\\)#i", $this->requestException->getMessage())) {
                 return new TimeoutException(
                     $this->requestException->getMessage(), $this->requestException->getCode(), $this->requestException
                 );

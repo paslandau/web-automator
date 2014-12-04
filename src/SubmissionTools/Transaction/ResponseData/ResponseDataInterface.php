@@ -8,42 +8,42 @@ interface ResponseDataInterface{
     /**
      * @return string
      */
-    public function GetBody();
+    public function getBody();
 
     /**
      * Transforms the body of the response in a DomDocument.
      * @return \DOMDocument
      */
-    public function GetDomDocument();
+    public function getDomDocument();
 
     /**
      * @return string
      */
-    public function GetStatusCode();
+    public function getStatusCode();
 
     /**
      * @return mixed[]
      */
-    public function GetHeaders();
+    public function getHeaders();
 
     /**
      * Last URL during the request
      * @return string
      */
-    public function GetUrl();
+    public function getUrl();
 
     /**
      * @return string
      */
-    public function GetReasonPhrase();
+    public function getReasonPhrase();
 
     /**
      * @return string
      */
-    public function GetProtocolVersion();
+    public function getProtocolVersion();
 
     /**
      * @return null|RequestException
      */
-    public function GetException();
+    public function getException();
 }

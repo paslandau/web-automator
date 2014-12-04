@@ -2,6 +2,7 @@
 
  - moved AbstractSubmissionManager back
  - fixed some type hints
+ - added unit test for IdentificationExtraction, SimpleRequestInfo, GuzzleRequestInfo, etc.
 
 ###0.1.1
 

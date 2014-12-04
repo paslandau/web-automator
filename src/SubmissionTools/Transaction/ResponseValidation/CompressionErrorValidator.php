@@ -16,7 +16,7 @@ class CompressionErrorValidator implements ResponseValidatorInterface
      */
     public function isValid(ResponseDataInterface $response)
     {
-        $e = $response->GetException();
+        $e = $response->getException();
         if ($e instanceof CompressionException) {
             return false;
         }

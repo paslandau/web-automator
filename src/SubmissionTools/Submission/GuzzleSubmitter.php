@@ -65,7 +65,7 @@ class GuzzleSubmitter implements SubmitterInterface
                 $requestInfo = $m->getNextRequest();
                 if ($requestInfo !== null) {
                     $guzzleInfo = GuzzleRequestInfo::fromRequestInfo($requestInfo);
-                    $request = $guzzleInfo->GetGuzzleRequest($this->client);
+                    $request = $guzzleInfo->getGuzzleRequest($this->client);
 //                    echo "III Before send. Request:".md5(spl_object_hash($request))."\n";
                     $requests[$key] = $request;
                     $request->getConfig()->set('id', $key);

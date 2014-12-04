@@ -36,7 +36,7 @@ class ResponseDataEvaluatorTest extends PHPUnit_Framework_TestCase
         $callback = function (ResponseDataInterface $response) {
             return $response->getBody();
         };
-        $this->extractorMock->expects($this->any())->method('GetData')->will($this->returnCallback($callback));
+        $this->extractorMock->expects($this->any())->method('getData')->will($this->returnCallback($callback));
     }
 
     /**
@@ -50,7 +50,7 @@ class ResponseDataEvaluatorTest extends PHPUnit_Framework_TestCase
         $callback = function ($actual) use ($expected) {
             return $actual == $expected;
         };
-        $comperatorMock->expects($this->any())->method('CompareToExpected')->will($this->returnCallback($callback));
+        $comperatorMock->expects($this->any())->method('compareToExpected')->will($this->returnCallback($callback));
         return $comperatorMock;
     }
 
@@ -61,7 +61,7 @@ class ResponseDataEvaluatorTest extends PHPUnit_Framework_TestCase
     private function GetResponseMock($returnValue)
     {
         $responseMock = $this->getMock(ResponseDataInterface::class);
-        $responseMock->expects($this->any())->method('GetBody')->will($this->returnValue($returnValue));
+        $responseMock->expects($this->any())->method('getBody')->will($this->returnValue($returnValue));
         return $responseMock;
     }
 
@@ -102,7 +102,7 @@ class ResponseDataEvaluatorTest extends PHPUnit_Framework_TestCase
         $xpath = new XpathTransformer($xPathExpression, $domTransformer);
         $arrTrans = new ArraySelectSingleTransformer(2, false, $xpath);
         $dts = new DomNodeToStringTransformer(DomNodeToStringTransformer::METHOD_NODE_VALUE, $arrTrans);
-        $extractor = new ResponseDataExtractor("GetBody", $dts);
+        $extractor = new ResponseDataExtractor("getBody", $dts);
 
         $obj = new DataEvaluator($comparisonObject, $extractor);
 
@@ -126,7 +126,7 @@ class ResponseDataEvaluatorTest extends PHPUnit_Framework_TestCase
         $xpath = new XpathTransformer($xPathExpression, $domTransformer);
         $arrTrans = new ArraySelectSingleTransformer(2, false, $xpath);
         $dts = new DomNodeToStringTransformer(DomNodeToStringTransformer::METHOD_NODE_VALUE, $arrTrans);
-        $extractor = new ResponseDataExtractor("GetBody", $dts);
+        $extractor = new ResponseDataExtractor("getBody", $dts);
 
         $obj = new DataEvaluator($comparisonObject, $extractor);
 

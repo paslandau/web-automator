@@ -14,11 +14,11 @@ class IncompleteXmlResponseValidator implements ResponseValidatorInterface{
      */
     public function isValid(ResponseDataInterface $response)
     {
-        if($response->GetException() !== null){
+        if($response->getException() !== null){
             return true; // some other error occured
         }
 
-        $body = $response->GetBody();
+        $body = $response->getBody();
         // remove declaration
         $pattern = "#^\\s*<\\?xml[^>]*?\\?>\\s*#uis";
         $body = preg_replace($pattern,"",$body);

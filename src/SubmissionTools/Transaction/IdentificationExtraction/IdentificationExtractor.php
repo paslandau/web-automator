@@ -40,7 +40,7 @@ class IdentificationExtractor implements IdentificationExtractionInterface {
      */
     public function extract(ResponseDataInterface $responseData)
     {
-        $this->extractor->GetData($responseData);
+        return $this->extractor->getData($responseData);
     }
 
 }

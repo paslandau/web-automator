@@ -95,7 +95,7 @@ class SubmissionStepQueue implements SubmissionStepQueueInterface
                 $this->getLogger()->debug("Checking step '$thisStep'...");
                 //todo handle Exceptions more elegant, e.g. make it possible for steps to evaluate an exception
                 // currently we're making sure that $responseData's guzzle response is not null to avoid errors
-                $error = $responseData->GetException();
+                $error = $responseData->getException();
 
                 if ($error !== null || $step->isIdentifiedBy($responseData)) {
                     $stepResult = null;

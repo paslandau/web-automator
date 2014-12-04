@@ -10,56 +10,17 @@ use GuzzleHttp\Message\RequestInterface;
 use GuzzleHttp\Post\PostBodyInterface;
 use GuzzleHttp\Stream\Stream;
 use GuzzleHttp\Subscriber\Retry\RetrySubscriber;
-use paslandau\GuzzleAutoCharsetEncodingSubscriber\GuzzleAutoCharsetEncodingSubscriber;
-use paslandau\DomUtility\DomConverterInterface;
-use paslandau\WebAutomator\SubmissionTools\Submission\Session\GuzzleSession;
 use paslandau\DataFiltering\Traits\LoggerTrait;
+use paslandau\DomUtility\DomConverterInterface;
+use paslandau\GuzzleAutoCharsetEncodingSubscriber\GuzzleAutoCharsetEncodingSubscriber;
+use paslandau\WebAutomator\SubmissionTools\Submission\Session\GuzzleSession;
 use paslandau\WebAutomator\SubmissionTools\Transaction\ResponseData\GuzzleResponseData;
 use paslandau\WebAutomator\SubmissionTools\Transaction\ResponseValidation\ResponseValidatorConfigInterface;
 use paslandau\WebUtility\EncodingConversion\EncodingConverterInterface;
 
-class GuzzleRequestInfo implements RequestInfoInterface
+class GuzzleRequestInfo extends AbstractBaseRequestInfo implements RequestInfoInterface
 {
     use LoggerTrait;
-    /**
-     * @var string
-     */
-    private $method;
-
-    /**
-     * @var string
-     */
-    private $url;
-
-    /**
-     * @var mixed
-     */
-    private $payload;
-
-    /**
-     * @var mixed[]
-     */
-    private $headers;
-
-    /**
-     * @var mixed[]
-     */
-    private $options;
-
-    /**
-     * @var null|DomConverterInterface
-     */
-    private $domConverter;
-
-    /**
-     * @return null|EncodingConverterInterface
-     */
-    private $encodingConverter;
-
-    /**
-     * @var null|ResponseValidatorConfigInterface
-     */
-    private $responseValidators;
 
     /**
      * @var null|GuzzleSession
@@ -105,13 +66,13 @@ class GuzzleRequestInfo implements RequestInfoInterface
         );
         $session = $info->getSession();
         if ($session !== null && !$session instanceof GuzzleSession) {
-            throw new \InvalidArgumentException("Session has to be of type GuzzleSession not " . gettype($session));
+            throw new \InvalidArgumentException("Session has to be of type GuzzleSession not " . get_class($session));
         }
         $guzzleRequest->setSession($session);
         return $guzzleRequest;
     }
 
-    public function GetGuzzleRequest(ClientInterface $guzzleClient)
+    public function getGuzzleRequest(ClientInterface $guzzleClient)
     {
         $options = array();
         if ($this->getOptions() !== null) {
@@ -134,7 +95,6 @@ class GuzzleRequestInfo implements RequestInfoInterface
         }
         if ($this->session !== null) {
             // add session
-            /** @var GuzzleSession ($this->session) */
             $sessionOptions = $this->session->getGuzzleOptions();
             $options = array_merge_recursive($options, $sessionOptions); //todo: array_merge or array_replace?
         }
@@ -143,135 +103,6 @@ class GuzzleRequestInfo implements RequestInfoInterface
         $this->attachRetrySubscriber($request);
         $this->attachFixEncodingSubscriber($request);
         return $request;
-    }
-
-    /**
-     * @return \mixed[]
-     */
-    public function getOptions()
-    {
-        return $this->options;
-    }
-
-    /**
-     * @param mixed[] $options
-     */
-    public function setOptions(array $options = null)
-    {
-        $this->options = $options;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPayload()
-    {
-        return $this->payload;
-    }
-
-    /**
-     * @param mixed|null $payload
-     */
-    public function setPayload($payload = null)
-    {
-        $this->payload = $payload;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMethod()
-    {
-        return $this->method;
-    }
-
-    /**
-     * @param string $method
-     */
-    public function setMethod($method)
-    {
-        $this->method = $method;
-    }
-
-    /**
-     * @return mixed[]|null
-     */
-    public function getHeaders()
-    {
-        return $this->headers;
-    }
-
-    /**
-     * @param mixed[]|null $headers
-     */
-    public function setHeaders(array $headers = null)
-    {
-        $this->headers = $headers;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * @param string $url
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    }
-
-    /**
-     * @return DomConverterInterface|null
-     */
-    public function getDomConverter()
-    {
-        return $this->domConverter;
-    }
-
-    /**
-     * @param null|DomConverterInterface $domConverter
-     */
-    public function setDomConverter($domConverter = null)
-    {
-        $this->domConverter = $domConverter;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEncodingConverter()
-    {
-        return $this->encodingConverter;
-    }
-
-    /**
-     * @param null|EncodingConverterInterface $encodingConverter
-     */
-    public function setEncodingConverter(EncodingConverterInterface $encodingConverter = null)
-    {
-        $this->encodingConverter = $encodingConverter;
-    }
-
-    /**
-     * @return null|ResponseValidatorConfigInterface
-     */
-    public function getResponseValidators()
-    {
-        return $this->responseValidators;
-    }
-
-    /**
-     * @param null|ResponseValidatorConfigInterface $validators
-     * @return void
-     */
-    public function setResponseValidators(ResponseValidatorConfigInterface $validators = null)
-    {
-        $this->responseValidators = $validators;
     }
 
     /**
@@ -288,23 +119,6 @@ class GuzzleRequestInfo implements RequestInfoInterface
     public function setSession($session = null)
     {
         $this->session = $session;
-    }
-
-    public function mergeWithDefaults(RequestInfoInterface $requestInfo)
-    {
-        if ($requestInfo === null) {
-            return;
-        }
-        foreach ($this as $prop => $val) {
-            if ($val === null) { // override null values in any case
-                $this->{$prop} = $requestInfo->{$prop};
-            }
-            if ($requestInfo->{$prop} !== null && is_array($requestInfo->{$prop})) { // merge arrays
-                if (is_array($val)) { // note: if $val was not set [= null] , it would have been overriden before
-                    $this->{$prop} = array_replace_recursive($requestInfo->{$prop}, $val);
-                }
-            }
-        }
     }
 
     private function attachRetrySubscriber(RequestInterface $request)

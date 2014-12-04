@@ -45,6 +45,9 @@ class ResponseDataExtractor extends AbstractBaseExtractor implements DataExtract
     protected function extract(/* ResponseDataInterface */ $responseData = null)
     {
 //        $extracted = $this->method->invoke($responseData); << won't work on Mocks
+        if($responseData === null){
+            throw new \InvalidArgumentException("responseData must not be null");
+        }
         $extracted = $responseData->{$this->method}();
         return $extracted;
     }

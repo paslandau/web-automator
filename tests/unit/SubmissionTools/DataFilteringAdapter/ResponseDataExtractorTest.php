@@ -1,6 +1,8 @@
 <?php
 
+use paslandau\DataFiltering\Transformation\DataTransformerInterface;
 use paslandau\WebAutomator\SubmissionTools\DataFilteringAdapter\ResponseDataExtractor;
+use paslandau\WebAutomator\SubmissionTools\Transaction\ResponseData\ResponseDataInterface;
 
 class ResponseDataExtractorTest extends PHPUnit_Framework_TestCase
 {
@@ -13,21 +15,24 @@ class ResponseDataExtractorTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->methods = array(
-            "GetBody",
-            "GetStatusCode",
-            "GetHeaders",
-            "GetUrl",
-            "GetVersion",
-            "GetReasonPhrase",
+            "getBody",
+            "getStatusCode",
+            "getHeaders",
+            "getUrl",
+            "getVersion",
+            "getReasonPhrase",
         );
-        $this->responseData = $this->getMock('paslandau\WebAutomator\SubmissionTools\Transaction\ResponseData\ResponseDataInterface');
-        $this->transformers = array(null);
-        $t = $this->getMock('paslandau\DataFiltering\Transformation\DataTransformationInterface');
-        $t->expects($this->any())->method("Transform")->will($this->returnArgument(0));
+        $this->responseData = $this->getMock(ResponseDataInterface::class);
+        $this->transformers = [
+            null
+        ];
+        $t = $this->getMock(DataTransformerInterface::class);
+        /** echo transformer */
+        $t->expects($this->any())->method("transform")->will($this->returnArgument(0));
         $this->transformers[] = $t;
     }
 
-    public function testTrue()
+    public function test_ShouldNotThrowExceptionOnKnownMethod()
     {
         foreach ($this->transformers as $t) {
             foreach ($this->responseData as $method) {
@@ -38,17 +43,29 @@ class ResponseDataExtractorTest extends PHPUnit_Framework_TestCase
         }
     }
 
-    public function testFalse()
+    public function test_ShouldThrowExceptionOnUnknownMethod()
     {
         foreach ($this->transformers as $t) {
-            $tests = array(
-                null,
-                "Unknown method"
-            );
-            $this->setExpectedException(get_class(new InvalidArgumentException()));
-            foreach ($tests as $method) {
-                new ResponseDataExtractor($method, $t);
+            $tests = [
+                "null" => null,
+                "Unknown method" => "Unknown method"
+            ];
+            foreach ($tests as $test => $method) {
+                $exception = null;
+                try {
+                    new ResponseDataExtractor($method, $t);
+                }catch(Exception $e){
+                    $exception = get_class($e);
+                }
+                $this->assertEquals(InvalidArgumentException::class,$exception, "Test '$test' failed");
             }
         }
+    }
+
+    public function test_extract_ShouldThrowExceptionOnNull()
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+        $r = new ResponseDataExtractor("GetBody");
+        $r->getData(null);
     }
 }
