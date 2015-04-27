@@ -43,7 +43,7 @@ class MultiExtractorBuilder extends AbstractBaseExtractorBuilder{
 
     public function absoluteUrl(DataExtractorInterface $relativeUrlExtractor){
         $basetrans = new BaseTransformer();
-        $baseUrlExtractor = new ResponseDataExtractor("GetUrl", $basetrans);
+        $baseUrlExtractor = new ResponseDataExtractor("getUrl", $basetrans);
         $relUrlTrans = $relativeUrlExtractor->getTransformer();
         $absoluteUrlT = new UrlAbsolutizerTransformer("", $relUrlTrans,false);
         $relativeUrlExtractor->setTransformer($absoluteUrlT);
