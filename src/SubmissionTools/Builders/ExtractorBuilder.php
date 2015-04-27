@@ -38,31 +38,31 @@ class ExtractorBuilder extends AbstractBaseExtractorBuilder implements Extractor
     }
 
     public function useBody(){
-        $this->method = "GetBody";
+        $this->method = "getBody";
         return $this;
     }
     public function useUrl(){
-        $this->method = "GetUrl";
+        $this->method = "getUrl";
         return $this;
     }
     public function useDomDocument(){
-        $this->method = "GetDomDocument";
+        $this->method = "getDomDocument";
         return $this;
     }
     public function useStatusCode(){
-        $this->method = "GetStatusCode";
+        $this->method = "getStatusCode";
         return $this;
     }
     public function useProtocolVersion(){
-        $this->method = "GetProtocolVersion";
+        $this->method = "getProtocolVersion";
         return $this;
     }
     public function useHeaders(){
-        $this->method = "GetHeaders";
+        $this->method = "getHeaders";
         return $this;
     }
     public function useReasonPhrase(){
-        $this->method = "GetReasonPhrase";
+        $this->method = "getReasonPhrase";
         return $this;
     }
 
