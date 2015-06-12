@@ -1,4 +1,11 @@
-##0.1.2
+#todo
+
+- add test
+- docu
+
+#dev-master
+
+###0.1.2
 
  - moved AbstractSubmissionManager back
  - fixed some type hints

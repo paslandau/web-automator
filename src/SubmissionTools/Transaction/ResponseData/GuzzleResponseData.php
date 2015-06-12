@@ -32,11 +32,11 @@ class GuzzleResponseData implements ResponseDataInterface
     private $domConverter;
 
     /**
-     * @param ResponseInterface $guzzleResponse
+     * @param ResponseInterface|null $guzzleResponse
      * @param \Exception|null $requestException [optional]. Default: null.
      * @param DomConverterInterface|null $domConverter [optional]. Default: null.
      */
-    public function __construct(ResponseInterface $guzzleResponse, \Exception $requestException = null, DomConverterInterface $domConverter = null)
+    public function __construct(ResponseInterface $guzzleResponse = null, \Exception $requestException = null, DomConverterInterface $domConverter = null)
     {
         $this->setGuzzleResponse($guzzleResponse);
         $this->requestException = $requestException;
@@ -55,7 +55,7 @@ class GuzzleResponseData implements ResponseDataInterface
     /**
      * @param \GuzzleHttp\Message\ResponseInterface $guzzleResponse
      */
-    public function setGuzzleResponse($guzzleResponse)
+    public function setGuzzleResponse($guzzleResponse = null)
     {
         $this->guzzleResponse = $guzzleResponse;
     }
@@ -66,6 +66,9 @@ class GuzzleResponseData implements ResponseDataInterface
      */
     public function getDomDocument()
     {
+        if($this->guzzleResponse === null){
+            return null;
+        }
         if ($this->domConverter === null) {
             throw new \RuntimeException("No DomConverter provided in the request");
         }
@@ -82,6 +85,9 @@ class GuzzleResponseData implements ResponseDataInterface
      */
     public function getBody()
     {
+        if($this->guzzleResponse === null){
+            return "";
+        }
         $stream = $this->guzzleResponse->getBody();
         if ($stream === null) {
             return "";
@@ -94,6 +100,9 @@ class GuzzleResponseData implements ResponseDataInterface
      */
     public function getStatusCode()
     {
+        if($this->guzzleResponse === null){
+            return 0;
+        }
         return $this->guzzleResponse->getStatusCode();
     }
 
@@ -103,6 +112,9 @@ class GuzzleResponseData implements ResponseDataInterface
     public function getHeaders()
     {
         $headers = [];
+        if($this->guzzleResponse === null){
+            return [];
+        }
         $guzzleHeaders = $this->guzzleResponse->getHeaders();
         foreach($guzzleHeaders as $h => $v){
             $lc = mb_strtolower($h);
@@ -117,6 +129,9 @@ class GuzzleResponseData implements ResponseDataInterface
      */
     public function getUrl()
     {
+        if($this->guzzleResponse === null){
+            return "";
+        }
         return $this->guzzleResponse->getEffectiveUrl();
     }
 
@@ -125,6 +140,9 @@ class GuzzleResponseData implements ResponseDataInterface
      */
     public function getReasonPhrase()
     {
+        if($this->guzzleResponse === null){
+            return "";
+        }
         return $this->guzzleResponse->getReasonPhrase();
     }
 
@@ -133,6 +151,9 @@ class GuzzleResponseData implements ResponseDataInterface
      */
     public function getProtocolVersion()
     {
+        if($this->guzzleResponse === null){
+            return "";
+        }
         return $this->guzzleResponse->getProtocolVersion();
     }
 

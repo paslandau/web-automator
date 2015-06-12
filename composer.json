@@ -17,7 +17,7 @@
     "repositories": [ { "type": "composer", "url": "http://packages.myseosolution.de/"} ],
     "minimum-stability": "dev",
     "require" : {
-        "guzzlehttp/guzzle": "~5.2.0",
+        "guzzlehttp/guzzle": "^5.3.0",
         "guzzlehttp/retry-subscriber": "~2",
         "psr/log": "~1",
         "monolog/monolog": "~1",
