@@ -1,39 +1,47 @@
 {
-    "name": "paslandau/web-automator",
-    "description" : "Automation framework for web requests",
-    "authors": [
-        {
-            "name": "Pascal Landau",
-            "email": "kontakt@myseosolution.de",
-            "homepage": "http://www.myseosolution.de",
-            "role": "Developer"
-        }
-    ],
-	"autoload": {
-	    "psr-4": {
-	        "paslandau\\WebAutomator\\": "src/"
-	    }
-	},
-    "repositories": [ { "type": "composer", "url": "http://packages.myseosolution.de/"} ],
-    "minimum-stability": "dev",
-    "require" : {
-        "guzzlehttp/guzzle": "^5.3.0",
-        "guzzlehttp/retry-subscriber": "~2",
-        "psr/log": "~1",
-        "monolog/monolog": "~1",
-        "symfony/event-dispatcher": "~2",
-        "paslandau/guzzle-auto-charset-encoding-subscriber": "dev-master",
-        "paslandau/data-filtering": "dev-master",
-        "paslandau/boolean-expressions": "dev-master",
-        "paslandau/io-utility": "dev-master",
-        "paslandau/array-utility": "dev-master",
-        "paslandau/dom-utility": "dev-master",
-        "paslandau/comparison-utility": "dev-master",
-        "paslandau/web-utility": "dev-master",
-        "paslandau/json-utility": "dev-master",
-        "paslandau/exception-utility": "dev-master"
-    },
-        "require-dev" : {
-            "phpunit/phpunit": "~4"
-        }
+  "name": "paslandau/web-automator",
+  "description": "Automation framework for web requests",
+  "authors": [
+    {
+      "name": "Pascal Landau",
+      "email": "kontakt@myseosolution.de",
+      "homepage": "http://www.myseosolution.de",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "paslandau\\WebAutomator\\": "src/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packages.myseosolution.de/"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "guzzlehttp/guzzle": "^5.3.0",
+    "guzzlehttp/retry-subscriber": "~2",
+    "psr/log": "~1",
+    "monolog/monolog": "~1",
+    "symfony/event-dispatcher": "~2",
+    "paslandau/guzzle-auto-charset-encoding-subscriber": "dev-master",
+    "paslandau/data-filtering": "dev-master",
+    "paslandau/boolean-expressions": "dev-master",
+    "paslandau/io-utility": "dev-master",
+    "paslandau/array-utility": "dev-master",
+    "paslandau/dom-utility": "dev-master",
+    "paslandau/comparison-utility": "dev-master",
+    "paslandau/web-utility": "dev-master",
+    "paslandau/json-utility": "dev-master",
+    "paslandau/exception-utility": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4"
+  },
+  "config": {
+    "secure-http": false
+  }
 }
