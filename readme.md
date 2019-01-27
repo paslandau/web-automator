@@ -1,18 +1,24 @@
-#web-automator
+# DEPRECATED ⛔ 
+
+This repository has been deprecated as of 2019-01-27. That code was written a long time ago and has been unmaintained for several years. Thus, repository will now be [archived](https://github.blog/2017-11-08-archiving-repositories/).If you are interested in taking over ownership, feel free to [contact me](https://www.pascallandau.com/about/).
+
+---
+
+# web-automator
 [![Build Status](https://travis-ci.org/paslandau/web-automator.svg?branch=master)](https://travis-ci.org/paslandau/web-automator)
 
 Automation framework for web requests
 
-##Description
+## Description
 
 Coming soon...
 
-##Requirements
+## Requirements
 
 - PHP >= 5.5
 - Guzzle >= 5.0.3
 
-##Installation
+## Installation
 
 The recommended way to install web-automator is through [Composer](http://getcomposer.org/).
 
